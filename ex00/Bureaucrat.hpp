@@ -1,7 +1,7 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include <iostream>
+#include "Grades.hpp"
 
 ///TODO: READ Proffesional C++ from [250 - 282] Chapter 8 (Then chapter 5)
 ///TODO: Read chapter 14 for exceptions, and page 69, 129
@@ -9,10 +9,10 @@
 class Bureaucrat
 {
 	public:
-		std::string getName()	const;
-		int getGrade()	const;
-		void gradeIncrement(); // tars en ashxatelu
-		void gradeDecrement();
+		std::string	getName()	const;
+		int			getGrade()	const;
+		void		gradeIncrement(); // tars en ashxatelu
+		void		gradeDecrement();
 	
 	public:
 			Bureaucrat();
@@ -20,12 +20,15 @@ class Bureaucrat
 			Bureaucrat(const Bureaucrat&);
 Bureaucrat&	operator=(const Bureaucrat&);
 // a = b <=> a.operator=(b)
+Bureaucrat&	operator<<(const Bureaucrat&);
+// a << b <=> a.operator<<(b) // mikana entadrum
 			~Bureaucrat();
-	
+	public:
+		GradeTooLowException	low;
+		GradeTooHighException	high;
 	private:
-		const std::string	name;
-		int					grade;
-
+		const std::string		name;
+		int						grade;
 };
 
-#endif 
+#endif
