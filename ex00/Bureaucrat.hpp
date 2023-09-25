@@ -20,8 +20,6 @@ class Bureaucrat
 			Bureaucrat(const Bureaucrat&);
 Bureaucrat&	operator=(const Bureaucrat&);
 // a = b <=> a.operator=(b)
-Bureaucrat&	operator<<(const Bureaucrat&);
-// a << b <=> a.operator<<(b) // mikana entadrum
 			~Bureaucrat();
 	public:
 		GradeTooLowException	low;
@@ -31,4 +29,6 @@ Bureaucrat&	operator<<(const Bureaucrat&);
 		int						grade;
 };
 
+std::ostream& operator<<(std::ostream& strm, const Bureaucrat&);
+// ostream << b <=> ostream.operator<<(b) // mikana entadrum
 #endif

@@ -83,15 +83,20 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& obj) // : name(obj.getName()
 	return (*this);
 }
 
-Bureaucrat&	Bureaucrat::operator<<(const Bureaucrat& obj)
-{
-	std::cout << "Bureaucrat insertion assigment(\"<<\") operator called\n";
-	// std::cout << this->name << ", bureaucrat grade" << this->grade ".\n";
-	std::cout << obj.name << ", bureaucrat grade " << obj.grade << ".\n"; // senc?
-	return(*this);
-}
 
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "Bureaucrat destructor called\n";
+}
+
+
+//----
+
+
+Bureaucrat&	operator<<(Bureaucrat& strm, const Bureaucrat& obj)
+{
+	std::cout << "Bureaucrat insertion assigment(\"<<\") operator called\n";
+	// std::cout << this->name << ", bureaucrat grade" << this->grade ".\n";
+	std::cout << obj.getName() << ", bureaucrat grade " << obj.getGrade() << ".\n";
+	return(strm);
 }
