@@ -99,3 +99,11 @@ std::ostream& operator<<(std::ostream& strm, const Bureaucrat& obj)
 	std::cout << obj.getName() << ", bureaucrat grade " << obj.getGrade() << ".\n";
 	return (strm);
 }
+
+void	Bureaucrat::signForm(const Form& obj)
+{
+	if (obj.getSignature() == SIGNED)
+		std::cout << this->name << " signed " << obj.getName() << std::endl;
+	else
+		std::cout << this->name << " couldn’t sign " << obj.getName() << " because grade is to low" << std::endl;
+}

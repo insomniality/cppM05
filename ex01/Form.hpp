@@ -5,16 +5,16 @@
 #include "Grades.hpp"
 #include "Bureaucrat.hpp"
 
-#define unsigned false
-#define signed true
+#define UNSIGNED false
+#define SIGNED true
 
 class Form
 {
 	public:
 		std::string getName() const;
 		bool getSignature() const;
-		int getgGradeToSign() const;
-		int getgGradeToExec() const;
+		int getGradeToSign() const;
+		int getGradeToExec() const;
 		void beSigned(const Bureaucrat&);
 	public:
 		GradeTooLowException	low;
@@ -22,7 +22,8 @@ class Form
 	public:
 		Form();
 		Form(const Form& obj);
-Form&	operator+(const Form& obj);
+		Form(const int gToSign, const int gToExec);
+Form&	operator=(const Form& obj);
 		~Form();
 	private:
 		const std::string name;
