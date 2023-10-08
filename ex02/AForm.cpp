@@ -13,7 +13,6 @@ void AForm::beSigned(const Bureaucrat& obj)
 	{
 		std::cerr << ex.what();
 	}
-
 }
 
 //

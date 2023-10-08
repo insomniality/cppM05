@@ -1,8 +1,16 @@
 #include "AForm.hpp"
+#include <fstream>
+
 
 void treeMaster(std::string target)
 {
+	std::ofstream nya;
 
+	for (int i = 0; i < 9; i++)
+	{
+
+	}
+	
 }
 
 //
