@@ -31,9 +31,27 @@ AForm&	operator=(const AForm& obj);
 		const std::string name;
 		bool signature; // = unsigned
 		const int gradeToSign;
-		const int gradeToExec;	
+		const int gradeToExec;
 };
 
 std::ostream& operator<<(std::ostream& stream, const AForm& obj);
+
+class ShrubberyCreationForm : public AForm
+{
+	public:
+		void treeMaster(std::string target);
+	public:
+		ShrubberyCreationForm();
+		ShrubberyCreationForm(const ShrubberyCreationForm& obj);
+		// ShrubberyCreationForm(const int gToSign, const int gToExec);
+ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& obj);
+		~ShrubberyCreationForm();
+	
+	private:
+		const std::string name;
+		bool signature; // = unsigned
+		const int gradeToSign; // 145
+		const int gradeToExec; // 137
+};
 
 #endif
