@@ -2,10 +2,12 @@
 # define BUREAUCRAT_HPP
 
 #include "Grades.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 ///TODO: READ Proffesional C++ from [250 - 282] Chapter 8 (Then chapter 5)
 ///TODO: Read chapter 14 for exceptions, and page 69, 129
+
+class AForm;
 
 class Bureaucrat
 {
@@ -14,7 +16,7 @@ class Bureaucrat
 		int			getGrade()	const;
 		void		gradeIncrement(); // tars en ashxatelu
 		void		gradeDecrement();
-		void		signForm(const Form& obj);
+		void		signForm(const AForm& obj);
 	public:
 			Bureaucrat();
 			Bureaucrat(const std::string&, int);

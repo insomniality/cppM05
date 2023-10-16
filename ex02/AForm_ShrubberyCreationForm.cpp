@@ -2,15 +2,21 @@
 #include <fstream>
 
 
-void treeMaster(std::string target)
+void treeMaster(std::string target, int height)
 {
-	std::ofstream nya;
+	std::ofstream nya(target + ".txt");
 
-	for (int i = 0; i < 9; i++)
+	for (int i = 1; i < height; i++)
 	{
-
+		for (int j = 0; j < height - i; j++)
+			nya << " ";
+		for (int j = 0; j < i; j++)
+			nya << "* ";
+		for (int j = 0; j < height - i; j++)
+			nya << " ";
+		nya << "\n";
 	}
-	
+	nya.close();
 }
 
 //
@@ -31,6 +37,7 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	if (this == &obj)
 		return (*this);
 	this->signature = obj.getSignature();
+	return (*this);
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()

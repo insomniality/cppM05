@@ -100,7 +100,7 @@ std::ostream& operator<<(std::ostream& strm, const Bureaucrat& obj)
 	return (strm);
 }
 
-void	Bureaucrat::signForm(const Form& obj)
+void	Bureaucrat::signForm(const AForm& obj)
 {
 	if (obj.getSignature() == SIGNED)
 		std::cout << this->name << " signed " << obj.getName() << std::endl;

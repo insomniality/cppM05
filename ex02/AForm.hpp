@@ -8,6 +8,9 @@
 #define UNSIGNED false
 #define SIGNED true
 
+class Bureaucrat;
+
+
 class AForm
 {
 	public:
