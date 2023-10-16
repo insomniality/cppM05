@@ -19,7 +19,6 @@ class AForm
 		int getGradeToSign() const;
 		int getGradeToExec() const;
 		void beSigned(const Bureaucrat&);
-
 	public:
 		GradeTooLowException	low;
 		GradeTooHighException	high;
@@ -42,7 +41,8 @@ std::ostream& operator<<(std::ostream& stream, const AForm& obj);
 class ShrubberyCreationForm : public AForm
 {
 	public:
-		void treeMaster(std::string target);
+		void treeMaster(std::string target, int height);
+		std::string getName() const;
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(const ShrubberyCreationForm& obj);

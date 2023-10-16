@@ -2,7 +2,7 @@
 #include <fstream>
 
 
-void treeMaster(std::string target, int height)
+void ShrubberyCreationForm::treeMaster(std::string target, int height)
 {
 	std::ofstream nya(target + ".txt");
 
@@ -17,6 +17,11 @@ void treeMaster(std::string target, int height)
 		nya << "\n";
 	}
 	nya.close();
+}
+
+std::string ShrubberyCreationForm::getName() const
+{
+	return (this->name);
 }
 
 //

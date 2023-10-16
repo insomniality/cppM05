@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 int main()
 {
@@ -9,5 +10,5 @@ int main()
 	// std::cout << z; // karam exeption-i mej exit-i pes ban avelacnem vor prtsni tsragir@
 
 	ShrubberyCreationForm x;
-	
+	x.treeMaster("test", 4);
 }
