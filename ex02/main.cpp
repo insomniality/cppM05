@@ -9,6 +9,12 @@ int main()
 	// z.gradeDecrement();
 	// std::cout << z; // karam exeption-i mej exit-i pes ban avelacnem vor prtsni tsragir@
 
-	ShrubberyCreationForm x;
-	x.treeMaster("test", 4);
+	ShrubberyCreationForm a("test");
+	
+	RobotomyRequestForm x("jaaa");
+
+	RobotomyRequestForm v("vii");
+
+
+	PresidentialPardonForm g("PREZ");
 }

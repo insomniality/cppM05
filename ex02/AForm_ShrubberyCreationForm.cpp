@@ -2,22 +2,6 @@
 #include <fstream>
 
 
-void ShrubberyCreationForm::treeMaster(std::string target, int height)
-{
-	std::ofstream nya(target + ".txt");
-
-	for (int i = 1; i < height; i++)
-	{
-		for (int j = 0; j < height - i; j++)
-			nya << " ";
-		for (int j = 0; j < i; j++)
-			nya << "* ";
-		for (int j = 0; j < height - i; j++)
-			nya << " ";
-		nya << "\n";
-	}
-	nya.close();
-}
 
 std::string ShrubberyCreationForm::getName() const
 {
@@ -31,11 +15,31 @@ ShrubberyCreationForm::ShrubberyCreationForm() : name("default"), signature(UNSI
 
 }
 
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : name("default"), signature(UNSIGNED), gradeToSign(145), gradeToExec(137)
+{
+	int height = target.length() + 1;
+
+	std::ofstream nya(target + ".txt");
+	for (int i = 1; i < height; i++)
+	{
+		for (int j = 0; j < height - i; j++)
+			nya << " ";
+		for (int j = 0; j < i; j++)
+			nya << "* ";
+		for (int j = 0; j < height - i; j++)
+			nya << " ";
+		nya << "\n";
+	}
+	nya.close();
+}
+
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) \
 : name(obj.getName()), signature(getSignature()), gradeToSign(getGradeToSign()), gradeToExec(getGradeToExec())
 {
 
 }
+
+
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj)
 {
