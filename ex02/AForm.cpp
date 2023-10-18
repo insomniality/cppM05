@@ -15,6 +15,25 @@ void AForm::beSigned(const Bureaucrat& obj)
 	}
 }
 
+void	executeForm(Form const &form)
+{
+
+}
+
+void	execute(Bureaucrat const &executor) const
+{
+	try
+	{
+		if (executor.get executor.getGrade() > )
+			throw ();
+	}
+	catch ()
+	{
+
+	}
+}
+
+
 //
 
 std::string AForm::getName() const

@@ -15,10 +15,12 @@ class AForm
 {
 	public:
 		virtual std::string getName() const = 0; // now class is abstract
-		bool getSignature() const;
-		int getGradeToSign() const;
-		int getGradeToExec() const;
-		void beSigned(const Bureaucrat&);
+		void	executeForm(Form const &form);
+		void	execute(Bureaucrat const &executor) const;
+		bool	getSignature() const;
+		int		getGradeToSign() const;
+		int		getGradeToExec() const;
+		void	beSigned(const Bureaucrat&);
 	public:
 		GradeTooLowException	low;
 		GradeTooHighException	high;
