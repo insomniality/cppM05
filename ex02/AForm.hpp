@@ -15,8 +15,7 @@ class AForm
 {
 	public:
 		virtual std::string getName() const = 0; // now class is abstract
-		void	executeForm(Form const &form);
-		void	execute(Bureaucrat const &executor) const;
+		bool	execute(Bureaucrat const &executor) const;
 		bool	getSignature() const;
 		int		getGradeToSign() const;
 		int		getGradeToExec() const;

@@ -1,5 +1,13 @@
 #include "Bureaucrat.hpp"
 
+void	Bureaucrat::executeForm(Form const &form)
+{
+	if(form.execute() == true)
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	else
+		std::cout << "Error" << std::endl;
+}
+
 std::string	Bureaucrat::getName()	const
 {
 	return(this->name);

@@ -12,6 +12,7 @@ class AForm;
 class Bureaucrat
 {
 	public:
+		void	executeForm(Form const &form);
 		std::string	getName()	const;
 		int			getGrade()	const;
 		void		gradeIncrement(); // tars en ashxatelu
