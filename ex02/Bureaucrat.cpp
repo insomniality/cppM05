@@ -2,11 +2,18 @@
 
 void	Bureaucrat::executeForm(AForm const &form)
 {
-	if(form.execute() == true)
+	// try catch, here
+	try
+	{
+		form.execute(form);
 		std::cout << this->getName() << " executed " << form.getName() << std::endl;
-	else
-		std::cout << "Error" << std::endl;
-}
+	}
+	catch (std::exception& ex)
+	{
+		std::cerr << ex.what();
+		std::cout << "Error" << std::endl;		
+		return (false);
+	}
 
 std::string	Bureaucrat::getName()	const
 {

@@ -15,19 +15,11 @@ void AForm::beSigned(const Bureaucrat& obj)
 	}
 }
 
-bool	AForm::execute(Bureaucrat const &executor) const
+void	AForm::execute(Bureaucrat const &executor) const
 {
-	try
-	{
-		if (this->signature == SIGNED && executor.getGrade() <= this->gradeToSign)
-			throw (this->low);
-		return (true);
-	}
-	catch (std::exception& ex)
-	{
-		std::cerr << ex.what();
-		return (false);
-	}
+	// hanelk try catch, toghel throw
+	if (this->signature == SIGNED && executor.getGrade() <= this->gradeToSign)
+		throw (this->low);
 }
 
 

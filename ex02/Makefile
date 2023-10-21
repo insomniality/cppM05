@@ -19,6 +19,8 @@ fclean:	clean
         rm -f *.txt; \
     fi
 
+ex01 DZI!!!!!!!!!
+
 re:	fclean	all
 
 .PHONY:	all clean fclean re

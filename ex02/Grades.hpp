@@ -15,4 +15,7 @@ class GradeTooLowException : public std::exception
 		const char* what() const throw(); // virtual?? // staticic gjvuma -_-
 };
 
+// Form::GradeTooLowException
+// GradeTooLowException
+
 #endif
