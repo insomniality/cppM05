@@ -15,6 +15,8 @@ int main()
 
 	RobotomyRequestForm v("vii");
 
-
 	PresidentialPardonForm g("PREZ");
+
+	Bureaucrat zz;
+	z.execute();
 }

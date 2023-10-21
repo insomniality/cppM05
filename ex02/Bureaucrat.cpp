@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-void	Bureaucrat::executeForm(Form const &form)
+void	Bureaucrat::executeForm(AForm const &form)
 {
 	if(form.execute() == true)
 		std::cout << this->getName() << " executed " << form.getName() << std::endl;
