@@ -1,19 +1,30 @@
 #include "Bureaucrat.hpp"
 
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Your Grade Is Too High Exception\n");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Your Grade Is Too Low Exception\n");
+}
+
 void	Bureaucrat::executeForm(AForm const &form)
 {
 	// try catch, here
 	try
 	{
-		form.execute(form);
+		form.execute(*this);
 		std::cout << this->getName() << " executed " << form.getName() << std::endl;
 	}
 	catch (std::exception& ex)
 	{
 		std::cerr << ex.what();
 		std::cout << "Error" << std::endl;		
-		return (false);
+		return ;
 	}
+}
 
 std::string	Bureaucrat::getName()	const
 {
@@ -31,7 +42,7 @@ void Bureaucrat::gradeDecrement()
 	{
 		this->grade++;
 		if (this->grade > 150)
-			throw (this->low);
+			throw (GradeTooLowException());
 	}
 	catch(std::exception& ex)
 	{
@@ -45,7 +56,7 @@ void Bureaucrat::gradeIncrement()
 	{
 		this->grade--;
 		if (this->grade < 1)
-			throw (this->high);
+			throw (GradeTooHighException());
 	}
 	catch(std::exception& ex)
 	{
@@ -68,9 +79,9 @@ Bureaucrat::Bureaucrat(const std::string& str, int n) : name(str), grade(n)
 	{
 		std::cout << "Bureaucrat parametric constructor called\n";
 		if (this->grade < 1)
-			throw (this->high);
+			throw (GradeTooHighException());
 		if (this->grade > 150)
-			throw (this->low);
+			throw (GradeTooLowException());
 	}
 	catch (std::exception& ex)
 	{
@@ -81,9 +92,6 @@ Bureaucrat::Bureaucrat(const std::string& str, int n) : name(str), grade(n)
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.getName())
 {
 	std::cout << "Bureaucrat copy constructor called\n";
-	// bayc ha vor? arji es taki 2 hat@?
-	this->low = obj.low;
-	this->high = obj.high;
 	this->grade = obj.getGrade();
 }
 
@@ -92,12 +100,9 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& obj) // : name(obj.getName()
 	if (this == &obj)
 		return (*this);	
 	std::cout << "Bureaucrat copy assigment(\"=\") operator called\n";
-	this->low = obj.low;
-	this->high = obj.high;
 	this->grade = obj.getGrade();
 	return (*this);
 }
-
 
 Bureaucrat::~Bureaucrat()
 {

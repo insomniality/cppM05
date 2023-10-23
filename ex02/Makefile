@@ -19,7 +19,7 @@ fclean:	clean
         rm -f *.txt; \
     fi
 
-ex01 DZI!!!!!!!!!
+# ex01 DZI!!!!!!!!!
 
 re:	fclean	all
 

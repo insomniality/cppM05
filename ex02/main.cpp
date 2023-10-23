@@ -9,7 +9,7 @@ int main()
 	// z.gradeDecrement();
 	// std::cout << z; // karam exeption-i mej exit-i pes ban avelacnem vor prtsni tsragir@
 
-	ShrubberyCreationForm a("test");
+	ShrubberyCreationForm a("akshgdasgdjhagskdhgaskdjgaksjdgkajsgdkajsgdkjasggdkjasgdkjagskdjgaksd");
 	
 	RobotomyRequestForm x("jaaa");
 
@@ -18,5 +18,13 @@ int main()
 	PresidentialPardonForm g("PREZ");
 
 	Bureaucrat zz;
-	z.execute();
+	try
+	{
+		a.execute(zz);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 }

@@ -1,15 +1,13 @@
 #ifndef AFORM_HPP
 # define AFORM_HPP
 
-#include <iostream>
-#include "Grades.hpp"
-#include "Bureaucrat.hpp"
+# include <iostream>
+# include "Bureaucrat.hpp"
 
-#define UNSIGNED false
-#define SIGNED true
+# define UNSIGNED false
+# define SIGNED true
 
 class Bureaucrat;
-
 
 class AForm
 {
@@ -21,14 +19,24 @@ class AForm
 		int		getGradeToExec() const;
 		void	beSigned(const Bureaucrat&);
 	
-	public:
-		GradeTooLowException	low;
-		GradeTooHighException	high;
+	protected:
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
+		};
+
 	public:
 		AForm();
 		AForm(const AForm& obj);
 		AForm(const int gToSign, const int gToExec);
-AForm&	operator=(const AForm& obj);
+		AForm& operator=(const AForm& obj);
 		~AForm();
 
 	private:

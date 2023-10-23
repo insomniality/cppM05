@@ -1,5 +1,15 @@
 #include "AForm.hpp"
 
+const char* AForm::GradeTooHighException::what() const throw()
+{
+	return ("Your Grade Is Too High Exception\n");
+}
+
+const char* AForm::GradeTooLowException::what() const throw()
+{
+	return ("Your Grade Is Too Low Exception\n");
+}
+
 void AForm::beSigned(const Bureaucrat& obj)
 {
 	try
@@ -7,7 +17,7 @@ void AForm::beSigned(const Bureaucrat& obj)
 		if (obj.getGrade() <= this->gradeToSign)
 			this->signature = SIGNED;
 		else
-			throw (this->low);
+			throw (GradeTooLowException());
 	}
 	catch(std::exception& ex)
 	{
@@ -19,7 +29,7 @@ void	AForm::execute(Bureaucrat const &executor) const
 {
 	// hanelk try catch, toghel throw
 	if (this->signature == SIGNED && executor.getGrade() <= this->gradeToSign)
-		throw (this->low);
+		throw (GradeTooLowException());
 }
 
 
