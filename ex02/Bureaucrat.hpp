@@ -11,7 +11,7 @@ class AForm;
 class Bureaucrat
 {
 	public:
-		void	executeForm(AForm const &form);
+		void	executeForm(AForm const &form); /** TODO: oka? vor AForm em sarqel Form-i tegh@? **/
 		std::string	getName()	const;
 		int			getGrade()	const;
 		void		gradeIncrement(); // tars en ashxatelu

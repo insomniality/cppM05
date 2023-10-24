@@ -12,7 +12,6 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 
 void	Bureaucrat::executeForm(AForm const &form)
 {
-	// try catch, here
 	try
 	{
 		form.execute(*this);
@@ -21,8 +20,8 @@ void	Bureaucrat::executeForm(AForm const &form)
 	catch (std::exception& ex)
 	{
 		std::cerr << ex.what();
-		std::cout << "Error" << std::endl;		
-		return ;
+		// std::cout << "Error" << std::endl;
+		// return ;
 	}
 }
 

@@ -27,13 +27,11 @@ void AForm::beSigned(const Bureaucrat& obj)
 
 void	AForm::execute(Bureaucrat const &executor) const
 {
-	// hanelk try catch, toghel throw
+	///TODO: hanelk try catch, toghel throw //TODO: vor hima chka oka??
 	if (this->signature == SIGNED && executor.getGrade() <= this->gradeToSign)
 		throw (GradeTooLowException());
+	///TODO: hmi petqa arandzin signature-i hamar exception sarqem?
 }
-
-
-//
 
 std::string AForm::getName() const
 {
