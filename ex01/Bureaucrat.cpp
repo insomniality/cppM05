@@ -1,5 +1,15 @@
 #include "Bureaucrat.hpp"
 
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Your Grade Is Too High Exception\n");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Your Grade Is Too Low Exception\n");
+}
+
 std::string	Bureaucrat::getName()	const
 {
 	return(this->name);

@@ -17,14 +17,23 @@ class Form
 		int getGradeToExec() const;
 		void beSigned(const Bureaucrat&);
 	public:
-		GradeTooLowException	low;
-		GradeTooHighException	high;
-	public:
 		Form();
 		Form(const Form& obj);
 		Form(const int gToSign, const int gToExec);
 Form&	operator=(const Form& obj);
 		~Form();
+	protected:
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
+		};
 	private:
 		const std::string name;
 		bool signature; // = unsigned

@@ -22,9 +22,18 @@ class Bureaucrat
 Bureaucrat&	operator=(const Bureaucrat&);
 // a = b <=> a.operator=(b)
 			~Bureaucrat();
-	public:
-		GradeTooLowException	low;
-		GradeTooHighException	high;
+	protected:
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
+		};
 	private:
 		const std::string		name;
 		int						grade;

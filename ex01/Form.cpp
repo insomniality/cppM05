@@ -1,5 +1,15 @@
 #include "Form.hpp"
 
+const char* Form::GradeTooHighException::what() const throw()
+{
+	return ("Your Grade Is Too High Exception\n");
+}
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+	return ("Your Grade Is Too Low Exception\n");
+}
+
 void Form::beSigned(const Bureaucrat& obj)
 {
 	try
