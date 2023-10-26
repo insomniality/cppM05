@@ -10,6 +10,11 @@ const char* AForm::GradeTooLowException::what() const throw()
 	return ("Your Grade Is Too Low Exception\n");
 }
 
+const char* AForm::NotSigned::what() const throw()
+{
+	return ("Not signed\n");
+}
+
 void AForm::beSigned(const Bureaucrat& obj)
 {
 	try
@@ -27,9 +32,11 @@ void AForm::beSigned(const Bureaucrat& obj)
 
 void	AForm::execute(Bureaucrat const &executor) const
 {
-	if (this->signature == SIGNED && executor.getGrade() <= this->gradeToSign)
+	if (executor.getGrade() <= this->gradeToSign)
 		throw (GradeTooLowException());
-	///TODO: hmi petqa arandzin signature-i hamar exception sarqem?
+	if (this->signature == SIGNED)
+		throw (NotSigned());
+	///TODO: hmi execute gri?? miat kjoges
 }
 
 std::string AForm::getName() const

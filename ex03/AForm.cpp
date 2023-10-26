@@ -10,11 +10,6 @@ const char* AForm::GradeTooLowException::what() const throw()
 	return ("Your Grade Is Too Low Exception\n");
 }
 
-const char* AForm::NameNotReal::what() const throw()
-{
-	return ("Name doesn't exist\n");
-}
-
 
 void AForm::beSigned(const Bureaucrat& obj)
 {

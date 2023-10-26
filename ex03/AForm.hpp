@@ -31,12 +31,6 @@ class AForm
 			public:
 				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
 		};
-		class NameNotReal : public std::exception
-		{
-			public:
-				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
-		};
-
 	public:
 		AForm();
 		AForm(const AForm& obj);

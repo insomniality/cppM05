@@ -21,24 +21,32 @@ Intern::~Intern()
 
 }
 
-AForm* Intern::makeForm(std::string nameOfForm)
+
+const char* Intern::NameNotReal::what() const throw()
+{
+	return ("Name doesn't exist\n");
+}
+
+
+AForm* Intern::makeForm(std::string nameOfForm, std::string targetOfForm)
 {
 	///TODO: petqa New-ov sargem?
 	AForm* retr = NULL;
 	if (nameOfForm == "PresidentialPardonForm")
 	{
-		retr = new PresidentialPardonForm("Ban");
+		retr = new PresidentialPardonForm(targetOfForm);
 	}
-	// if (nameOfForm == "RobotomyRequestForm")
-	// {
-	// 	retr = &(RobotomyRequestForm x(targetOfForm));
-	// }
-	// if (nameOfForm == "ShrubberyCreationForm")
-	// {
-	// 	retr = &(ShrubberyCreationForm x(targetOfForm));
-	// }
-	// else
-	// 	throw ();
+	if (nameOfForm == "RobotomyRequestForm")
+	{
+		retr = new RobotomyRequestForm(targetOfForm);
+	}
+	if (nameOfForm == "ShrubberyCreationForm")
+	{
+		retr = new ShrubberyCreationForm(targetOfForm);
+	}
+	else
+		throw (NameNotReal());
+	///TODO:: catch stegh grem te urish tegh?
 	std::cout << "Intern creates " << nameOfForm << std::endl;
 	return (retr);
 }

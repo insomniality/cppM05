@@ -11,5 +11,11 @@ class Intern
 		Intern& operator=(const Intern& obj);
 		~Intern();
 	public:
-		AForm* makeForm(std::string nameOfForm);
+		class NameNotReal : public std::exception
+		{
+			public:
+				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
+		};
+	public:
+		AForm* makeForm(std::string nameOfForm, std::string targetOfForm);
 };
