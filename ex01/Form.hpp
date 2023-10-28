@@ -2,11 +2,11 @@
 # define FORM_HPP
 
 #include <iostream>
-#include "Grades.hpp"
-#include "Bureaucrat.hpp"
 
 #define UNSIGNED false
 #define SIGNED true
+
+class Bureaucrat;
 
 class Form
 {
@@ -20,6 +20,7 @@ class Form
 		Form();
 		Form(const Form& obj);
 		Form(const int gToSign, const int gToExec);
+		Form(const std::string & name, const int gToSign, const int gToExec);
 Form&	operator=(const Form& obj);
 		~Form();
 	protected:

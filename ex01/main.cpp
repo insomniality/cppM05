@@ -1,10 +1,21 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
-	Bureaucrat a("Mika", 151);
-	Bureaucrat z("Aper", 150);
-	std::cout << z;
-	z.gradeDecrement();
-	std::cout << z; // karam exeption-i mej exit-i pes ban avelacnem vor prtsni tsragir@
+	try
+	{
+		Bureaucrat z("Aper", 150);
+		Form form("dzuk", 145, 123);
+
+		z.signForm(form);
+
+		std::cout << z << "\n";
+		z.gradeDecrement();
+		std::cout << z << "\n";
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }

@@ -37,6 +37,7 @@ void	AForm::execute(Bureaucrat const &executor) const
 	if (this->signature == SIGNED)
 		throw (NotSigned());
 	///TODO: hmi execute gri?? miat kjoges
+	//eeee
 }
 
 std::string AForm::getName() const

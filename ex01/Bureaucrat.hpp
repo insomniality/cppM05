@@ -1,11 +1,12 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include "Grades.hpp"
-#include "Form.hpp"
+#include <iostream>
+
+class Form;
 
 ///TODO: READ Proffesional C++ from [250 - 282] Chapter 8 (Then chapter 5)
-///TODO: Read chapter 14 for exceptions, and page 69, 129
+///TODO: Read chapter 14 for exceptions, and page 69, 420
 
 class Bureaucrat
 {
@@ -14,25 +15,24 @@ class Bureaucrat
 		int			getGrade()	const;
 		void		gradeIncrement(); // tars en ashxatelu
 		void		gradeDecrement();
-		void		signForm(const Form& obj);
+		void		signForm(Form& obj);
 	public:
 			Bureaucrat();
 			Bureaucrat(const std::string&, int);
 			Bureaucrat(const Bureaucrat&);
-Bureaucrat&	operator=(const Bureaucrat&);
-// a = b <=> a.operator=(b)
+			Bureaucrat&	operator=(const Bureaucrat&);
 			~Bureaucrat();
-	protected:
+	private:
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
+				const char* what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
+				const char* what() const throw();
 		};
 	private:
 		const std::string		name;
@@ -40,5 +40,5 @@ Bureaucrat&	operator=(const Bureaucrat&);
 };
 
 std::ostream& operator<<(std::ostream& strm, const Bureaucrat&);
-// ostream << b <=> ostream.operator<<(b) // mikana entadrum
+
 #endif
