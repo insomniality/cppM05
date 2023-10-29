@@ -2,12 +2,12 @@
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Your Grade Is Too High Exception\n");
+	return ("Your Grade Is Too High");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Your Grade Is Too Low Exception\n");
+	return ("Your Grade Is Too Low");
 }
 
 void	Bureaucrat::executeForm(AForm const &form)
@@ -20,8 +20,6 @@ void	Bureaucrat::executeForm(AForm const &form)
 	catch (std::exception& ex)
 	{
 		std::cerr << ex.what();
-		// std::cout << "Error" << std::endl;
-		// return ;
 	}
 }
 
@@ -37,30 +35,16 @@ int	Bureaucrat::getGrade()	const
 
 void Bureaucrat::gradeDecrement()
 {
-	try
-	{
-		this->grade++;
-		if (this->grade > 150)
-			throw (GradeTooLowException());
-	}
-	catch(std::exception& ex)
-	{
-		std::cerr << ex.what();
-	}
+	if (this->grade >= 150)
+		throw (GradeTooLowException());
+	this->grade++;
 }
 
 void Bureaucrat::gradeIncrement()
 {
-	try
-	{
-		this->grade--;
-		if (this->grade < 1)
-			throw (GradeTooHighException());
-	}
-	catch(std::exception& ex)
-	{
-		std::cerr << ex.what();
-	}
+	if (this->grade <= 1)
+		throw (GradeTooHighException());
+	this->grade--;
 }
 
 
@@ -72,21 +56,16 @@ Bureaucrat::Bureaucrat()
 	std::cout << "Bureaucrat default constructor called\n";
 }
 
-Bureaucrat::Bureaucrat(const std::string& str, int n) : name(str), grade(n)
+Bureaucrat::Bureaucrat(const std::string& str, int n) : name(str)
 {
-	try
-	{
-		std::cout << "Bureaucrat parametric constructor called\n";
-		if (this->grade < 1)
-			throw (GradeTooHighException());
-		if (this->grade > 150)
-			throw (GradeTooLowException());
-	}
-	catch (std::exception& ex)
-	{
-		std::cerr << ex.what();
-	}	
+	std::cout << "Bureaucrat parametric constructor called\n";
+	if (n < 1)
+		throw (GradeTooHighException());
+	if (n > 150)
+		throw (GradeTooLowException());
+	grade = n;
 }
+
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.getName())
 {
@@ -119,7 +98,7 @@ std::ostream& operator<<(std::ostream& strm, const Bureaucrat& obj)
 	return (strm);
 }
 
-void	Bureaucrat::signForm(Form& obj)
+void	Bureaucrat::signForm(AForm& obj)
 {
 	try
 	{

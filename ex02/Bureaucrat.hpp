@@ -16,7 +16,7 @@ class Bureaucrat
 		int			getGrade()	const;
 		void		gradeIncrement(); // tars en ashxatelu
 		void		gradeDecrement();
-		void		signForm(const AForm& obj);
+		void		signForm(AForm& obj);
 	public:
 			Bureaucrat();
 			Bureaucrat(const std::string&, int);

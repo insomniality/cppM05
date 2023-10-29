@@ -20,7 +20,7 @@ int main()
 
 	Bureaucrat zz;
 	Intern gago;
-	gago.makeForm("PresidentialPardonForm");
+	gago.makeForm("PresidentialPardonForm", "aaa");
 	try
 	{
 		a.execute(zz);
