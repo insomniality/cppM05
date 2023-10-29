@@ -17,14 +17,13 @@ int main()
 
 	PresidentialPardonForm g("PREZ");
 
-	Bureaucrat zz;
-	try
-	{
-		a.execute(zz);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	Bureaucrat zz("dzver", 1);
+	
+	std::cout << zz << "\n";
+	std::cout << v << "\n";
+
+	zz.signForm(v);
+
+	zz.executeForm(v);
 	
 }

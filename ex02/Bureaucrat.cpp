@@ -19,7 +19,7 @@ void	Bureaucrat::executeForm(AForm const &form)
 	}
 	catch (std::exception& ex)
 	{
-		std::cerr << ex.what();
+		std::cerr << "Bureaucrat " << name << " couldn't sign form because " << ex.what() << "\n";
 	}
 }
 
@@ -92,9 +92,8 @@ Bureaucrat::~Bureaucrat()
 
 std::ostream& operator<<(std::ostream& strm, const Bureaucrat& obj)
 {
-	std::cout << "Bureaucrat insertion assigment(\"<<\") operator called\n";
 	// std::cout << this->name << ", bureaucrat grade" << this->grade ".\n";
-	std::cout << obj.getName() << ", bureaucrat grade " << obj.getGrade() << ".\n";
+	std::cout << obj.getName() << ", bureaucrat grade " << obj.getGrade();
 	return (strm);
 }
 

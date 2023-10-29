@@ -1,6 +1,5 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include "Intern.hpp"
 
 int main()
 {
@@ -18,16 +17,13 @@ int main()
 
 	PresidentialPardonForm g("PREZ");
 
-	Bureaucrat zz;
-	Intern gago;
-	gago.makeForm("PresidentialPardonForm", "aaa");
-	try
-	{
-		a.execute(zz);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	Bureaucrat zz("dzver", 1);
+	
+	std::cout << zz << "\n";
+	std::cout << v << "\n";
+
+	zz.signForm(v);
+
+	zz.executeForm(v);
 	
 }

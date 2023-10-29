@@ -1,5 +1,6 @@
 #include "AForm.hpp"
 #include <cstdlib>
+#include <unistd.h>
 #include <time.h>
 #include <fstream>
 
@@ -7,32 +8,46 @@
 
 // #include <random>
 
-std::string RobotomyRequestForm::getName() const
-{
-	return (this->name);
-}
-
 //
 
-RobotomyRequestForm::RobotomyRequestForm() : name("default"), signature(UNSIGNED), gradeToSign(72), gradeToExec(45)
+RobotomyRequestForm::RobotomyRequestForm() : target ("default"), name("default"), signature(UNSIGNED), gradeToSign(72), gradeToExec(45)
 {
 
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : name("default"), signature(UNSIGNED), gradeToSign(72), gradeToExec(45)
+void RobotomyRequestForm::beSigned(const Bureaucrat& obj)
 {
-	int a = rand();
+	if (obj.getGrade() <= this->gradeToSign)
+		this->signature = SIGNED;
+	else
+		throw (GradeTooLowException());
+}
+
+void RobotomyRequestForm::execute(Bureaucrat const &executor) const 
+{
+	if (this->signature != SIGNED)
+		throw (NotSigned());
+	if (executor.getGrade() > this->gradeToExec)
+		throw (GradeTooLowException());
+
 	srand(time(NULL));
-	a = a + rand();
+	int a = rand();
+
 	std::cout << "*Drilling noises*" << std::endl;
+	usleep(500 * 1000);
 	if (a % 2 == 0)
 		std::cout << target + " has been robotomized successfully" << std::endl;
 	else
 		std::cout << target + "s robotomy failed" << std::endl;
+} 
+
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : target (target), name("default"), signature(UNSIGNED), gradeToSign(72), gradeToExec(45)
+{
+
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) \
-: name(obj.getName()), signature(getSignature()), gradeToSign(getGradeToSign()), gradeToExec(getGradeToExec())
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj)
+	: name(obj.getName()), signature(obj.getSignature()), gradeToSign(obj.getGradeToSign()), gradeToExec(obj.getGradeToExec())
 {
 
 }

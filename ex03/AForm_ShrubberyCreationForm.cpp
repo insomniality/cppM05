@@ -1,22 +1,33 @@
 #include "AForm.hpp"
 #include <fstream>
 
-
-
-std::string ShrubberyCreationForm::getName() const
-{
-	return (this->name);
-}
-
 //
 
-ShrubberyCreationForm::ShrubberyCreationForm() : name("default"), signature(UNSIGNED), gradeToSign(145), gradeToExec(137)
+ShrubberyCreationForm::ShrubberyCreationForm() :target ("default"),  name("default"), signature(UNSIGNED), gradeToSign(145), gradeToExec(137)
 {
 
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : name("default"), signature(UNSIGNED), gradeToSign(145), gradeToExec(137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :target (target),  name("default"), signature(UNSIGNED), gradeToSign(145), gradeToExec(137)
 {
+
+}
+
+void ShrubberyCreationForm::beSigned(const Bureaucrat& obj)
+{
+	if (obj.getGrade() <= this->gradeToSign)
+		this->signature = SIGNED;
+	else
+		throw (GradeTooLowException());
+}
+
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const 
+{
+	if (this->signature != SIGNED)
+		throw (NotSigned());
+	if (executor.getGrade() > this->gradeToExec)
+		throw (GradeTooLowException());
+
 	int height = target.length() + 1;
 
 	std::ofstream nya(target + ".txt");
@@ -31,10 +42,10 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : name("default
 		nya << "\n";
 	}
 	nya.close();
-}
+} 
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) \
-: name(obj.getName()), signature(getSignature()), gradeToSign(getGradeToSign()), gradeToExec(getGradeToExec())
+: name(obj.getName()), signature(obj.getSignature()), gradeToSign(obj.getGradeToSign()), gradeToExec(obj.getGradeToExec())
 {
 
 }

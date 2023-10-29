@@ -2,36 +2,35 @@
 
 const char* AForm::GradeTooHighException::what() const throw()
 {
-	return ("Your Grade Is Too High Exception\n");
+	return ("Your Grade Is Too High");
 }
 
 const char* AForm::GradeTooLowException::what() const throw()
 {
-	return ("Your Grade Is Too Low Exception\n");
+	return ("Your Grade Is Too Low");
 }
 
+const char* AForm::NotSigned::what() const throw()
+{
+	return ("Not signed");
+}
 
 void AForm::beSigned(const Bureaucrat& obj)
 {
-	try
-	{
-		if (obj.getGrade() <= this->gradeToSign)
-			this->signature = SIGNED;
-		else
-			throw (GradeTooLowException());
-	}
-	catch(std::exception& ex)
-	{
-		std::cerr << ex.what();
-	}
+	if (obj.getGrade() <= this->gradeToSign)
+		this->signature = SIGNED;
+	else
+		throw (GradeTooLowException());
 }
 
 void	AForm::execute(Bureaucrat const &executor) const
 {
-	///TODO: hanelk try catch, toghel throw //TODO: vor hima chka oka??
-	if (this->signature == SIGNED && executor.getGrade() <= this->gradeToSign)
+	if (this->signature != SIGNED)
+		throw (NotSigned());
+	if (executor.getGrade() > this->gradeToExec)
 		throw (GradeTooLowException());
-	///TODO: hmi petqa arandzin signature-i hamar exception sarqem?
+	///TODO: hmi execute gri?? miat kjoges
+	//eeee
 }
 
 std::string AForm::getName() const

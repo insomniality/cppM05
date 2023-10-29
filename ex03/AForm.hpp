@@ -12,12 +12,12 @@ class Bureaucrat;
 class AForm
 {
 	public:
-		virtual std::string getName() const = 0; // now class is abstract
-		void	execute(Bureaucrat const &executor) const;
+		std::string getName() const; // now class is abstract
+		virtual void	execute(Bureaucrat const &executor) const = 0;
 		bool	getSignature() const;
 		int		getGradeToSign() const;
 		int		getGradeToExec() const;
-		void	beSigned(const Bureaucrat&);
+		virtual void	beSigned(const Bureaucrat&) = 0;
 	
 	protected:
 		class GradeTooHighException : public std::exception
@@ -27,6 +27,12 @@ class AForm
 		};
 
 		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
+		};
+
+		class NotSigned : public std::exception
 		{
 			public:
 				const char* what() const throw(); // virtual?? // staticic gjvuma -_-
@@ -50,16 +56,17 @@ std::ostream& operator<<(std::ostream& stream, const AForm& obj);
 class ShrubberyCreationForm : public AForm
 {
 	public:
-		std::string getName() const;
+		void	execute(Bureaucrat const &executor) const;
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm& obj);
 		// ShrubberyCreationForm(const int gToSign, const int gToExec);
-ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& obj);
+		ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& obj);
 		~ShrubberyCreationForm();
-	
+		void	beSigned(const Bureaucrat&);
 	private:
+		std::string target;
 		const std::string name;
 		bool signature; // = unsigned
 		const int gradeToSign; // 145
@@ -69,16 +76,17 @@ ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& obj);
 class RobotomyRequestForm : public AForm
 {
 	public:
-		std::string getName() const;
+		void	execute(Bureaucrat const &executor) const;
 	public:
 		RobotomyRequestForm();
 		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(const RobotomyRequestForm& obj);
 		// RobotomyRequestForm(const int gToSign, const int gToExec);
-RobotomyRequestForm&	operator=(const RobotomyRequestForm& obj);
+		RobotomyRequestForm&	operator=(const RobotomyRequestForm& obj);
 		~RobotomyRequestForm();
-	
+		void	beSigned(const Bureaucrat&);
 	private:
+		std::string target;
 		const std::string name;
 		bool signature; // = unsigned
 		const int gradeToSign;
@@ -88,16 +96,17 @@ RobotomyRequestForm&	operator=(const RobotomyRequestForm& obj);
 class PresidentialPardonForm : public AForm
 {
 	public:
-		std::string getName() const;
+		void	execute(Bureaucrat const &executor) const;
 	public:
 		PresidentialPardonForm();
 		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(const PresidentialPardonForm& obj);
 		// PresidentialPardonForm(const int gToSign, const int gToExec);
-PresidentialPardonForm&	operator=(const PresidentialPardonForm& obj);
+		PresidentialPardonForm&	operator=(const PresidentialPardonForm& obj);
 		~PresidentialPardonForm();
-	
+		void	beSigned(const Bureaucrat&);
 	private:
+		std::string target;
 		const std::string name;
 		bool signature; // = unsigned
 		const int gradeToSign;
